@@ -1,0 +1,51 @@
+{
+  "id": "2550762",
+  "name": "vue1",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "15765372",
+      "name": "验证码",
+      "font_class": "yanzhengma",
+      "unicode": "e699",
+      "unicode_decimal": 59033
+    },
+    {
+      "icon_id": "17347475",
+      "name": "邮箱",
+      "font_class": "youxiang",
+      "unicode": "e69e",
+      "unicode_decimal": 59038
+    },
+    {
+      "icon_id": "21513637",
+      "name": "lock",
+      "font_class": "lock",
+      "unicode": "e6c7",
+      "unicode_decimal": 59079
+    },
+    {
+      "icon_id": "21513682",
+      "name": "trash",
+      "font_class": "trash",
+      "unicode": "e6ce",
+      "unicode_decimal": 59086
+    },
+    {
+      "icon_id": "21513684",
+      "name": "user",
+      "font_class": "user",
+      "unicode": "e6cf",
+      "unicode_decimal": 59087
+    },
+    {
+      "icon_id": "21513703",
+      "name": "sync",
+      "font_class": "sync",
+      "unicode": "e6d1",
+      "unicode_decimal": 59089
+    }
+  ]
+}
