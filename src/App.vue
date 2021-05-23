@@ -9,9 +9,10 @@
 </template>
 
 <style>
+body { margin: 0; padding: 0; font: 15px "Microsoft YaHei", Arial, Helvetica, sans-serif; }
 #app {
-  max-width: 960px;
-  margin: 0 auto 80px;
+  min-width: 960px;
+  margin: 0 auto 0px;
   /*font-family: Avenir, Helvetica, Arial, sans-serif;*/
   /*-webkit-font-smoothing: antialiased;*/
   /*-moz-osx-font-smoothing: grayscale;*/

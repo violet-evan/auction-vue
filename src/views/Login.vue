@@ -116,7 +116,7 @@ export default {
   methods: {
     // 测试
     test() {
-      // console.log("测试接口数据")
+      console.log("测试接口数据")
       // this.$axios.post(apis.test, {
       //   username: 'test',
       //   password: '123'
@@ -125,6 +125,7 @@ export default {
       //   console.log(res)
       //   console.log(res.request)
       // })
+
     },
 
     // 拿到生成的验证码, code 就是子组件传过来的值
@@ -168,6 +169,9 @@ export default {
                   message: data.msg,
                   type: 'success'
                 });
+
+                // 跳转主页页面
+                this.$router.push('/index');
               }
 
               // 如果不是 1，axios 拦截器会自动拦截并显示失败原因

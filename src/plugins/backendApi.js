@@ -10,7 +10,9 @@ let apis = {
     // 登录
     login: 'user/login',
     // 注册
-    register: 'user/register'
+    register: 'user/register',
+    // 给邮箱发送验证码
+    sendVerification: 'reset/sendByUser',
 
 };
 

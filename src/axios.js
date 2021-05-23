@@ -13,16 +13,16 @@ axios.interceptors.request.use(request => {
 axios.interceptors.response.use(response => {
 
     let res = response.data;
-
-    // console.log("===============")
-    // console.log(response);
-    // console.log("===============")
-    // console.log(res);
+    console.log("===============")
+    console.log(res);
 
     if (res.code === 1) {
         // 成功才能返回结果
         return response;
     } else {
+
+        console.log("===============")
+        console.log(response);
 
         // 请求失败 显示原因
         Element.Message({

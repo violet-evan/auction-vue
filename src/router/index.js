@@ -3,6 +3,8 @@ import VueRouter from 'vue-router'
 import Login from "@/views/Login";
 import Register from "@/views/Register";
 import Change from "@/views/Change";
+import Index from '@/views/index'
+import Detail from "@/views/Detail";
 
 Vue.use(VueRouter)
 
@@ -26,6 +28,16 @@ const routes = [
     path: '/change',
     name: 'Change',
     component: Change
+  },
+  { // 主页
+    path: '/index',
+    name: 'Index',
+    component: Index
+  },
+  { // 详情
+    path: '/detail',
+    name: 'Detail',
+    component: Detail
   },
 
 ]
