@@ -25,7 +25,7 @@
                   <!-- 卡片的内容 -->
                   <div class="card-content">
                     <div class="title">{{ item.title }}</div>
-                    <div class="status">￥{{ item.reward_amount }}元 发布中</div>
+                    <div class="status">￥{{ item.rewardAmount }}元 发布中</div>
                     <div class="descry">{{ item.request }}</div>
                   </div>
 
@@ -96,7 +96,7 @@ export default {
             // 期望期限
             ddl: '期望期限',
             // 悬赏金额
-            reward_amount: 100,
+            rewardAmount: 100,
             // 解决方式
             solution: '招标',
             email: '这是邮箱',
@@ -124,6 +124,7 @@ export default {
 
     // 渲染数据
     this.loadData();
+
 
   },
 
@@ -153,10 +154,15 @@ export default {
 
     // 模拟从后台拿到数据
     getData() {
-      const a = ''
 
+      console.log(this.$store.getters["t_project/getData"]);
+      // 返回 store 所模拟的后台数据
+      return this.$store.getters["t_project/getData"];
+    },
 
-      return a;
+    // 搜索
+    seach(str) {
+      let data = this.$store.getters["t_project/distributeBySearch"]({ infomation: str });
     }
 
   },
