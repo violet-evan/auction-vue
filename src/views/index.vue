@@ -7,16 +7,52 @@
     <article class="content">
       <el-divider></el-divider>
 
+<!--      <div class="seach-box"></div>-->
+
+      <el-container class="box">
+        <el-container>
+          <el-main>
+            <el-row :gutter="20">
+              <el-col :span="16" :offset="2">
+<!--                <el-col :span="12">-->
+<!--                  <el-menu default-active="1" class="el-menu-demo border-none" mode="horizontal">-->
+<!--                    <el-menu-item index="1">最新</el-menu-item>-->
+<!--                    <el-menu-item index="2">热门</el-menu-item>-->
+<!--                    <el-menu-item index="3">发现</el-menu-item>-->
+<!--                  </el-menu>-->
+<!--                </el-col>-->
+                <el-col :span="12" style="margin-top: 10px;">
+                  <el-input
+                      class="seach-input"
+                      placeholder="请输入内容"
+                      v-model="input"
+                      clearable>
+                  </el-input>
+                  <el-button class="seach-btn" plain icon="el-icon-search" @click="getSearch()"></el-button>
+
+                </el-col>
+
+              </el-col>
+            </el-row>
+          </el-main>
+        </el-container>
+        <el-aside width="5%"></el-aside>
+      </el-container>
+
+      <!-- 没有数据显示的内容 -->
+      <el-col v-show="list.data[0].id === 0" class="blank-card">暂无数据</el-col>
 
       <el-container class="box">
         <el-container>
           <el-main>
 
             <el-row>
-              <el-col :span="10" v-for="(item, index) in list.data" :offset="2">
 
-                <!-- 卡片的标题 -->
+              <el-col v-show="list.data[0].id > 0" :span="10" v-for="(item, index) in list.data" :offset="2">
+
+                <!-- 卡片 -->
                 <el-card class="box-card">
+                  <!-- 卡片的标题 -->
                   <div slot="header" class="clearfix card-header">
                     <span class="card-header-left">{{ item.releaserName }} {{ item.releaseTime }}发布</span>
                     <span class="card-header-right">{{ item.total }} 人参与</span>
@@ -51,9 +87,7 @@
           </el-main>
         </el-container>
 
-        <el-aside width="250px">
-
-        </el-aside>
+        <el-aside width="5%"></el-aside>
       </el-container>
 
 <!--      <el-footer>Footer</el-footer>-->
@@ -78,6 +112,7 @@ export default {
 
   data() {
     return {
+      input: '',
       list: {
         // 当前页面
         current: 1,
@@ -88,24 +123,24 @@ export default {
         // 数据
         data: [
           {
-            id: 1,
+            id: 0,
             // title
-            title: '卡片标题',
+            title: '',
             // 项目具体要求
-            request: '这是要求描述',
+            request: '',
             // 期望期限
-            ddl: '期望期限',
+            ddl: '',
             // 悬赏金额
-            rewardAmount: 100,
+            rewardAmount: 0,
             // 解决方式
-            solution: '招标',
-            email: '这是邮箱',
+            solution: '',
+            email: '',
             // 发布人
-            releaseId: 1,
+            releaseId: 0,
             // 发布人
-            releaserName: 'username',
+            releaserName: '',
             // 发布时间
-            releaseTime: '这是时间',
+            releaseTime: '',
             // 项目是否确认最后的接取人状态(默认是0未确认
             taker_status: 0,
             // 多少个人竞拍
@@ -129,6 +164,10 @@ export default {
   },
 
   methods: {
+
+    getSearch() {
+      console.log("获取搜索数据的方法");
+    },
 
     // 点击按钮触发的方法
     goDetail(item) {
@@ -190,7 +229,7 @@ export default {
 }
 
 .box-card {
-  width: 480px;
+  /*width: 480px;*/
 }
 
 .clearfix:before,
@@ -203,6 +242,12 @@ export default {
   clear: both
 }
 
+
+.border { border: 1px solid #e6e6e6; }
+.border-none { border: none !important; }
+.seach-input { width: 80%; }
+.seach-btn { width: 15%; margin-left: 1%; text-align: center; }
+.blank-card { width: 960px; height: 100px; font-size: 25px; font-weight: bolder; text-align: center; margin: 0 auto; }
 
 .content {  }
 .box { margin-left: 20px; margin-right: 50px; }
