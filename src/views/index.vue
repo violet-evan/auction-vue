@@ -12,28 +12,22 @@
       <el-container class="box">
         <el-container>
           <el-main>
-            <el-row :gutter="20">
-              <el-col :span="16" :offset="2">
-<!--                <el-col :span="12">-->
-<!--                  <el-menu default-active="1" class="el-menu-demo border-none" mode="horizontal">-->
-<!--                    <el-menu-item index="1">最新</el-menu-item>-->
-<!--                    <el-menu-item index="2">热门</el-menu-item>-->
-<!--                    <el-menu-item index="3">发现</el-menu-item>-->
-<!--                  </el-menu>-->
-<!--                </el-col>-->
-                <el-col :span="12" style="margin-top: 10px;">
-                  <el-input
-                      class="seach-input"
-                      placeholder="请输入内容"
-                      v-model="input"
-                      clearable>
-                  </el-input>
-                  <el-button class="seach-btn" plain icon="el-icon-search" @click="getSearch()"></el-button>
-
-                </el-col>
-
-              </el-col>
-            </el-row>
+            <el-row>
+  <el-col :span="28"><div class="grid-content bg-purple">
+  <el-autocomplete
+      class="inline-input"
+      v-model="input"
+      :fetch-suggestions="querySearch"
+      placeholder="请输入你的内容"
+      :trigger-on-focus="false"
+      @select="handleSelect"
+      @input="change($event)"
+    ></el-autocomplete>
+    </div></el-col>
+  <el-col :span="4"><div class="grid-content bg-purple-light">
+    <el-button type="primary" icon="el-icon-search">搜索</el-button>
+    </div></el-col>
+</el-row>
           </el-main>
         </el-container>
         <el-aside width="5%"></el-aside>
@@ -159,7 +153,8 @@ export default {
 
     // 渲染数据
     this.loadData();
-
+    // 搜索框
+    this.restaurants = this.loadAll();
 
   },
 
@@ -202,7 +197,33 @@ export default {
     // 搜索
     seach(str) {
       let data = this.$store.getters["t_project/distributeBySearch"]({ infomation: str });
-    }
+    },
+         // 搜索框方法
+    querySearch(queryString, cb) {
+        var restaurants = this.restaurants;
+        var results = queryString ? restaurants.filter(this.createFilter(queryString)) : restaurants;
+        // 调用 callback 返回建议列表的数据
+        cb(results);
+      },
+      createFilter(queryString) {
+        return (restaurant) => {
+          return (restaurant.value.toLowerCase().indexOf(queryString.toLowerCase()) === 0);
+        };
+      },
+      loadAll() {
+        return [
+          { "value": "前端项目", "address": "" },
+          { "value": "后端项目", "address": "" },
+          { "value": "其他项目", "address": "" }
+          ];
+      },
+      handleSelect(item) {
+        console.log(item);
+      },
+      // 搜索框
+      change(e){
+        this.$forceUpdate()
+      } 
 
   },
 
@@ -267,4 +288,5 @@ export default {
 .el-pagination { padding-top: 20px; padding-bottom: 20px; margin: 40px; text-align: right; }
 .el-row .el-col:nth-child(n + 3) { margin-top: 5%; }
 
+.inline-input{width: 300px;margin-left: 90px;}
 </style>
