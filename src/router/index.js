@@ -5,6 +5,7 @@ import Register from "@/views/Register";
 import Change from "@/views/Change";
 import Index from '@/views/index'
 import Detail from "@/views/Detail";
+import Release from "@/views/Release";
 
 Vue.use(VueRouter)
 
@@ -38,6 +39,11 @@ const routes = [
     path: '/detail',
     name: 'Detail',
     component: Detail
+  },
+  { // 发布项目
+    path: '/release',
+    name: 'Release',
+    component: Release
   },
 
 ]

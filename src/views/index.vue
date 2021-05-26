@@ -31,10 +31,23 @@
           </el-main>
         </el-container>
         <el-aside width="5%"></el-aside>
+
+<!-- 按钮  -->
+
+ <el-row>
+  
+  <el-button type="primary"    class="btn"  @click="cimsInputClick">发布项目</el-button>
+</el-row>
+
+
+
       </el-container>
 
       <!-- 没有数据显示的内容 -->
       <el-col v-show="list.data[0].id === 0" class="blank-card">暂无数据</el-col>
+
+
+
 
       <el-container class="box">
         <el-container>
@@ -173,6 +186,15 @@ export default {
       this.$router.push("/detail");
     },
 
+
+     //  发布项目按钮的页面跳转
+  cimsInputClick(){
+    // 跳转<发布项目>的详情页面
+      this.$router.push("/release");
+console.log("页面跳转")
+  },
+
+
     // 加载数据的方法
     loadData() {
       const data = this.getData();
@@ -289,4 +311,15 @@ export default {
 .el-row .el-col:nth-child(n + 3) { margin-top: 5%; }
 
 .inline-input{width: 300px;margin-left: 90px;}
+
+/* 按钮样式 */
+
+.btn{
+  float:right;
+  border-radius: 5px;
+  background-color:#9c5daf;
+  background:linear-gradient(to bottom,#ffffff 50%, #f3f3f3 50%) ;
+  border: 1px solid #D8D8D8;
+  text-align: none;
+}
 </style>
